@@ -3,23 +3,25 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="style.css">
         <title>Contact Me</title>
     </head>
     <body>
 
-        <nav>
-            <h4>
-                
-                <a href="home.html">Home</a>
-                <a href="aboutme.html">About Me</a>
-                <a href="contact.html">Contact</a>
-                <a href="projects.html">Projects</a>
-                
-            </h4>
-        </nav>
-        <h1>Contact Me</h1>
+        <div class="tab-container">
+            <input type="checkbox" id="toggle" class="toggle-input">
+            <label for="toggle" class="toggle-label">☰ Menu</label>
+            <nav id="tab-content" class="tab-content">
+                <h4>
+                    <a href="home.html">Home</a>
+                    <a href="aboutme.html">About Me</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="projects.html">Projects</a>
+                </h4>
+            </nav>
+        </div>
+        <h1>Send me your questions, comments or queries!</h1>
         <div id="wrapper">
-            <h3>Send me your questions, comments and project related queries!</h3>
             <form action="mailto:tanisha.zaman@ontariotechu.net" ?subject="Contacting" enctype="text/plain" method="post" name="Form">
             <p>
                 <label for="name">Your Name:</label><br>
@@ -41,24 +43,19 @@
                 <input type="submit" value="Submit"/>
             </form>
             <footer>
-                <p>&copy; 2024 by Tanisha Zaman </p>
+                <p>&copy; 2024 by Tanisha Zaman</p>
                 <nav>
-                    <h7>
-                        
+                    <div class="footer-links">
                         <a href="home.html">Home</a>
                         <a href="aboutme.html">About Me</a>
                         <a href="contact.html">Contact</a>
                         <a href="projects.html">Projects</a>
-                        
-                    </h7>
+                    </div>
                 </nav>
             </footer>
 
         </div>
 
-
-
     </body>
-
 
 </html>

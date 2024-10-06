@@ -1,44 +1,175 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        
-    </head>
-    
-    <body>
-
-        <nav>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My Projects</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="text-align: center;">
+    <div class="tab-container">
+        <input type="checkbox" id="toggle" class="toggle-input">
+        <label for="toggle" class="toggle-label">☰ Menu</label>
+        <nav id="tab-content" class="tab-content">
             <h4>
-                
                 <a href="home.html">Home</a>
                 <a href="aboutme.html">About Me</a>
                 <a href="contact.html">Contact</a>
                 <a href="projects.html">Projects</a>
-                
             </h4>
         </nav>
-        <header>
-            <h1>Projects</h1>
-        </header>
-        <article>
-            <h3>a</h3>
-            <p>b</p>
-            <section>
-                <h3>c</h3>
-                <p>d</p>
-            </section>
-            <footer>
-                <p>&copy; 2024 by Tanisha Zaman </p>
-                <nav>
-                    <h7>
-                        
-                        <a href="home.html">Home</a>
-                        <a href="aboutme.html">About Me</a>
-                        <a href="contact.html">Contact</a>
-                        <a href="projects.html">Projects</a>
-                        
-                    </h7>
-                </nav>
-            </footer>
-    </body>
-</html>
+    </div>
+    <h1>My Python Projects!</h1>
+
+    <section>
+        <h2>Script 1: Guess The Number!</h2>
+        <pre><code class="python">
+import random
+
+num = random.randint(1,100)
+
+while True: 
+    guess = int(input("Guess the number: "))
+    
+    if guess < num:
+        print("This guess is too low!")
+    elif guess > num:
+        print("This guess is too high!")
+    else:
+        print("Correct!", num, "is the right answer!")
+        break
+        </code></pre>
+        <a href="TanishaZaman_GuessTheNumber.py" download="GuessTheNumber.py">Download GuessTheNumber Script</a>
+    </section>
+
+    <section>
+        <h2>Script 2: Calculator!</h2>
+        <pre><code class="python">
+old_result = 0
+operation_line = """
+Here are the available inputs:
+For addition: '+' or 'add' or 'plus'
+For subtraction: '-' or 'subtract' or 'minus'
+For multiplication: '*' or 'times' or 'multiply'
+For division: '/' or 'divide'
+For exponents: '**' or 'raise' or 'exponent'
+To exit: 'stop' or 'exit'
+"""
+
+while True:
+    num1 = input("Please enter first number: ")
+    if num1 in ['exit', 'stop']:
+        print("Goodbye!")
+        break
+    print(operation_line)
+    
+    opp = input("Please enter the operation name or symbol: ")
+    if opp in ['exit', 'stop']:
+        print("Goodbye!")
+        break
+    
+    num2 = input("Please enter second number: ")
+    if num2 in ['exit', 'stop']:
+        print("Goodbye!")
+        break
+    
+    num1 = int(num1)
+    if num2:
+        num2 = int(num2)
+    else:
+        num2 = old_result
+    
+    if opp in ['+', 'add', 'plus']:
+        result = num1 + num2
+        print("The sum of", num1, 'and', num2, 'is', float(result))
+        </code></pre>
+        <a href="TanishaZaman_Calculator.py" download="Calculator.py">Download Calculator Script</a>
+    </section>
+
+    <section>
+        <h2>Script 3: To Do List!</h2>
+        <pre><code class="python">
+from datetime import datetime
+
+ToDoList = []
+
+def addNewItems():
+    global ToDoList
+    taskname = input("Please enter a new task: ")
+    if checkItemExists(taskname):
+        print("Task already exists! Please select options again.")
+        return
+    date = input("Please enter the date in format: yyyy/mm/dd HH:MM:SS: ")
+    current_time = datetime.now()
+    task_date = datetime.strptime(date, "%Y/%m/%d %H:%M:%S")
+    
+    if task_date < current_time:
+        print("Time entered is in the past! Select the options again.")
+    else:
+        item_text = task_date.strftime("%Y/%m/%d %H:%M:%S") + ' - ' + taskname
+        ToDoList.append((task_date, taskname))
+        print("Task added successfully.")
+    ToDoList.sort(key=takeSecond)
+
+def checkItemExists(taskname):
+    global ToDoList
+    for item in ToDoList:
+        if taskname == item[1]:
+            return True
+    return False
+    
+def takeSecond(element):
+    return (element[0], element[1]) 
+
+def printListItems():
+    print("To Do List:")
+    for i, (date, taskname) in enumerate(ToDoList):
+        formatted_date = date.strftime('%Y-%m-%d %H:%M:%S')
+        print("{}. {} - {}".format(i, formatted_date, taskname))
+
+def removeListItems():
+    remove = int(input("Please enter task position: "))
+    if remove < 0 or remove >= len(ToDoList):
+        print("Invalid task position. Please select options again.")
+    else:
+        del ToDoList[remove]
+        print("Task removed successfully.")
+
+while True:
+    print('''
+    1 - Enter a new To Do task
+    2 - Print the list of all To Do tasks
+    3 - Remove a To Do task
+    4 - Exit the program
+    ''')
+    
+    option = int(input("Please enter an option (1/2/3/4): "))
+
+    if option == 1:
+        addNewItems()
+    elif option == 2:
+        printListItems()
+    elif option == 3: 
+        removeListItems()
+    elif option == 4:
+        print("End of program.")
+        break
+    else: 
+        print("Invalid option. Please try again.")
+        </code></pre>
+        <a href="TanishaZaman_ToDoList.py" download="ToDoList.py">Download ToDoList Script</a>
+    </section>
+    
+    <footer>
+        <p>&copy; 2024 by Tanisha Zaman</p>
+        <nav>
+            <div class="footer-links">
+                <a href="home.html">Home</a>
+                <a href="aboutme.html">About Me</a>
+                <a href="contact.html">Contact</a>
+                <a href="projects.html">Projects</a>
+            </div>
+        </nav>
+    </footer>
+</body>
 </html>
